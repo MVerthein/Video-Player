@@ -1,0 +1,101 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="app.css">
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div id='vid-play-overlay'>
+        <div id="overlay-video-name">
+          Video Name
+        </div>
+        <div id="overlay-artist">
+          Artist Name | Type of Artist
+        </div>
+        <p id="overlay-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.
+        </p>
+          <div id="count-sec">
+            <div class="overlay-sec">
+              <img class="overlay-icon" src="assets/small-white-icons_collaborators.png" alt="collaborators"><p class="vid-cnt">23</p>
+            </div>
+            <div class="overlay-sec">
+              <img class="overlay-icon" src="assets/small-white-icons_reactions.png" alt="reactions"><p  class="vid-cnt">23</p>
+            </div>
+            <div class="overlay-sec">
+              <img class="overlay-icon" src="assets/small-white-icons_comments.png" alt="comments"><p  class="vid-cnt">124</p>
+            </div>
+            <div class="overlay-sec">
+              <img class="overlay-icon" src="assets/small-white-icons_shares.png" alt="shares"><p  class="vid-cnt">23</p>
+            </div>
+            <div class="overlay-sec">
+              <img class="overlay-icon" src="assets/small-white-icons_play.png" alt="play"><p  class="vid-cnt">1223</p>
+            </div>
+            <div class="overlay-sec">
+              <img class="overlay-icon" src="assets/small-white-icons_award winning.png" alt="award winning"><p class="vid-cnt">Challenge Winner</p>
+            </div>
+          </div>
+          <a href="#" class="follow-button">Follow(2112)</a>
+
+    </div>
+
+
+
+    <video id="video" onclick="this.paused ? this.play() : this.pause();">
+        <source id="mp4" src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+    </video>
+
+
+    <div id="video-controllers-backing">
+        <!-- <button type="button" id="play-pause">Play</button> -->
+        <!-- <strong id="vid-player-artist">Artist Name</strong> -->
+        <!-- <div id="vid-player-vid-name">Video Name</div> -->
+
+        <div class="control">
+          <div id="video-controls">
+            <a id='artist' href="#">Artist Name</a> <a id='vid-name' href="#">Video Name</a>
+            <button type="button" id="play-pause">Play</button>
+            <input type="range" id="seek-bar" value="0">
+            <button type="button" id="mute">Mute</button>
+            <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1">
+            <button type="button" id="full-screen">Full-Screen</button>
+          </div>
+        </div>
+        <!-- <input type="range" id="seek-bar" value="0">
+            <img id="mute" src=
+            "assets/small-white-icons_volume-off.png" alt="audio">
+            <img id="mute" src="assets/small-white-icons_volume-high.png" alt="audio">
+        <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1">
+        <img id="download" src="assets/small-white-icons_download.png" alt="download">
+        <img id="full-screen" src="assets/small-white-icons_full screen.png" alt="full-screen">
+        <img id="tools" src="assets/small-white-icons_utilitiy.png" alt="tools"> -->
+    </div>
+  </div>
+</body>
+
+
+<script>
+var overlay         = document.getElementById('vid-play-overlay'),
+    video           = document.getElementById('video'),
+    videoPlaying    = false;
+
+    function hideOverlay() {
+      console.log("hi hidden overlay");
+      overlay.style.display = "none";
+      videoPlaying = true;
+      video.play();
+    }
+
+function showOverlay() {
+  console.log("you hit show overlay");
+    // this check is to differentiate seek and actual pause
+    if (video.readyState === 4) {
+        overlay.style.display = "block";
+        videoPlaying = true;
+    }
+}
+
+
+video.addEventListener('pause', showOverlay);
+overlay.addEventListener('click', hideOverlay);
+
+</script>
